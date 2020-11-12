@@ -29,10 +29,11 @@ const Header = (props) => {
   return (
     <>
       <div>
-        <Navbar bg="dark" variant="dark">
+      <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Navbar.Brand as={Link} to="/">
-            CA-3 Gruppe 5
+            Andreas Andersen CA-3
           </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="mr-auto">
               <NavItem href="/">
