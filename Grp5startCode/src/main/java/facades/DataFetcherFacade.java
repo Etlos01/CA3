@@ -8,6 +8,7 @@ package facades;
 import com.google.gson.Gson;
 import dtos.BoredDTO;
 import dtos.CatFactsDTO;
+import dtos.DogjpgDTO;
 import dtos.MyIPDTO;
 import dtos.SpaceDTO;
 import dtos.TrumpQuotesDTO;
@@ -67,6 +68,15 @@ public class DataFetcherFacade {
         TrumpQuotesDTO trumpQuotesDTO = gson.fromJson(jasonString, TrumpQuotesDTO.class);
 
         return trumpQuotesDTO;
+    }
+    
+    public DogjpgDTO getDogjpgDTO() throws IOException {
+
+        Gson gson = new Gson();
+        String jasonString = HttpUtils.fetchData("https://dog.ceo/api/breeds/image/random");
+        DogjpgDTO dogjpgDTO = gson.fromJson(jasonString, DogjpgDTO.class);
+
+        return dogjpgDTO;
     }
 
 }

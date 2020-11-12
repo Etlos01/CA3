@@ -9,6 +9,7 @@ import facade from "./apiFacade";
 import ValidateRoleSite from "./validateRoleSite";
 import UserSite from "./userSite";
 import AdminSite from "./adminSite";
+import Dogs from "./dogs";
 
 const NavBarIO = () => {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -41,9 +42,9 @@ const Header = (props) => {
                   Home
                 </Nav.Link>
               </NavItem>
-              <NavItem href="/Readme">
-                <Nav.Link as={Link} to="/Readme">
-                  Readme
+              <NavItem href="/Dogs">
+                <Nav.Link as={Link} to="/Dogs">
+                  Dogs
                 </Nav.Link>
               </NavItem>
               <NavItem href="/DailyFun">
@@ -70,6 +71,7 @@ const Content = (props) => {
     <Switch>
       <Route exact path="/" component={Home} />
       <Route path="/Readme" component={Readme} />
+      <Route path="/Dogs" component={Dogs} />
       <Route path="/DailyFun" component={DailyFun} />
       <Route path="/AdminSite" component={AdminSite} />
       <Route path="/UserSite" component={UserSite} />
