@@ -16,16 +16,10 @@ import java.util.List;
 public class UserDTO {
     private String fname;
     private String password;
-    private List<RoleDTO> roles;
     
     public UserDTO(User u){
         this.fname = u.getUserName();
         this.password = u.getUserPass();
-        this.roles = new ArrayList<>();
-        
-        u.getRoleList().forEach(role -> {
-            this.roles.add(new RoleDTO(role));
-        });
     }
     
     
@@ -39,14 +33,6 @@ public class UserDTO {
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public List<RoleDTO> getRoles() {
-        return roles;
-    }
-
-    public void setRoles(List<RoleDTO> roles) {
-        this.roles = roles;
     }
     
     

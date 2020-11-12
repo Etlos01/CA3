@@ -1,5 +1,6 @@
 import jwt_decode from "jwt-decode";
 import { Site } from "./../sites"
+import { AdminAddUser } from "./../sites";
 
 
 const URL = Site;
@@ -55,7 +56,11 @@ function ApiFacade() {
 
             })
     }
+    const addUser = (user, password) => {
 
+        const options = makeOptions("POST", true, { fname: user, password: password })
+        return fetch(AdminAddUser, options);
+    }
 
     const fetchData = () => {
         const options = makeOptions("GET", true); //True add's the token
@@ -78,7 +83,6 @@ function ApiFacade() {
         }
         return opts;
     }
-
     return {
         makeOptions,
         setToken,
@@ -88,12 +92,10 @@ function ApiFacade() {
         logout,
         fetchData,
         getUserName,
-        getRoles
+        getRoles,
+        addUser
     }
 }
 const facade = ApiFacade();
-
-
-
 
 export default facade;

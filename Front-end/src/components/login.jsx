@@ -45,7 +45,7 @@ function LoggedIn() {
 }
 
 function LoginComplete(props) {
-  //const [loggedIn, setLoggedIn] = useState(false);
+  // const [loggedIn, setLoggedIn] = useState(false);
 
   const logout = () => {
     facade.logout();

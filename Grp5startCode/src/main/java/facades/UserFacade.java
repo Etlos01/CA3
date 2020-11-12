@@ -45,8 +45,7 @@ public class UserFacade {
     public UserDTO addUser(UserDTO u){
         EntityManager em = emf.createEntityManager();
         User user = new User(u.getFname(),u.getPassword());
-        
-        u.getRoles().forEach(role -> {user.addRole(new Role(role.getRoleName()));});
+        user.addRole(new Role("user"));
         try {
         em.getTransaction().begin();
         em.persist(user);

@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import { Navbar, Nav, NavItem, NavDropdown } from "react-bootstrap";
+import { Navbar, Nav, NavItem, NavDropdown, DropdownButton, ButtonGroup } from "react-bootstrap";
 import Login from "./login";
 import DailyFun from "./dailyFun";
 import Home from "./home";
@@ -30,11 +30,11 @@ const Header = (props) => {
     <>
       <div>
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-          <Navbar.Brand as={Link} to="/">
+          <Navbar.Brand className="order-md-0 order-1" as={Link} to="/">
             Andreas Andersen CA-3
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-          <Navbar.Collapse id="responsive-navbar-nav">
+          <Navbar.Collapse className="order-md-1 order-0" id="responsive-navbar-nav">
             <Nav className="mr-auto">
               <NavItem href="/">
                 <Nav.Link as={Link} to="/">
@@ -52,21 +52,11 @@ const Header = (props) => {
                 </Nav.Link>
               </NavItem>
               <ValidateRoleSite loggedIn={props.loggedIn} />
-              <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-                <NavDropdown.Item as={Link} to="/">
-                  Home
-                </NavDropdown.Item>
-                <NavDropdown.Item as={Link} to="/Readme">
-                  Readme
-                </NavDropdown.Item>
-              </NavDropdown>
-            </Nav>
+            </Nav>          
             <Nav>
-              <NavItem href="/Login">
-                <Nav.Link as={Link} to="/Login">
-                  <IsLoggedIn loggedIn={props.loggedIn} />
-                </Nav.Link>
-              </NavItem>
+              <DropdownButton menuAlign={{ lg: 'right' }} title={<IsLoggedIn loggedIn={props.loggedIn}/>}>
+              <Login setLoggedIn={props.setLoggedIn} loggedIn={props.loggedIn}/>
+              </DropdownButton>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
@@ -106,3 +96,10 @@ const IsLoggedIn = (props) => {
 };
 
 export default NavBarIO;
+
+
+/*<NavItem href="/Login">
+                <Nav.Link as={Link} to="/Login">
+                  <IsLoggedIn loggedIn={props.loggedIn} />
+                </Nav.Link>
+              </NavItem>*/
