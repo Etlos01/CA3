@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import facade from "./apiFacade";
 import { AdminUrlUserCount } from "./../sites";
+import { Form, Button } from "react-bootstrap";
+
 
 const url = AdminUrlUserCount;
 
@@ -42,8 +44,27 @@ const AdminSite = () => {
       </button>
       <p></p>
       <h2>Add User</h2>
-      <form onChange={handleChange} onSubmit={handleSubmit}>
-        <input 
+      <Form onChange={handleChange} onSubmit={handleSubmit}>
+      <Form.Group controlId="formBasicEmail">
+      <Form.Label>Name</Form.Label>
+      <Form.Control name="fname" placeholder="Enter Name" />
+      </Form.Group>
+      <Form.Group controlId="formBasicPassword">
+      <Form.Label>Password</Form.Label>
+      <Form.Control name="password" placeholder="Password" />
+      </Form.Group>
+      <Button variant="dark" type="submit">Add Me</Button>
+
+        
+      </Form>
+      <p>{JSON.stringify(user)}</p>
+    </>
+  );
+};
+
+export default AdminSite;
+
+/*<input 
         name="fname" 
         placeholder="User Name" 
         />
@@ -53,11 +74,4 @@ const AdminSite = () => {
         placeholder="Password" 
         />
         <br />
-        <button type="submit">Add User</button>
-      </form>
-      <p>{JSON.stringify(user)}</p>
-    </>
-  );
-};
-
-export default AdminSite;
+        <button type="submit">Add Me</button>*/

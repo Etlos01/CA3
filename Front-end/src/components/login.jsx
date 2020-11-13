@@ -1,5 +1,11 @@
 import React, { useState, useEffect } from "react";
 import facade from "./apiFacade";
+import { Form, Button, Nav } from "react-bootstrap";
+import ValidateRoleSite from "./validateRoleSite";
+import Home from "./home";
+
+
+
 
 function LogIn({ login }) {
   const init = { username: "", password: "" };
@@ -19,15 +25,22 @@ function LogIn({ login }) {
   return (
     <div>
       <h2>Login</h2>
-      <form onChange={onChange}>
-        <input type="text" placeholder="User Name" id="username" />
-        <input type="password" placeholder="Password" id="password" />
-        <button onClick={performLogin}>Login</button>
-      </form>
+      <Form onChange={onChange}>
+      <Form.Group controlId="formBasicEmail">
+      <Form.Label>User Name</Form.Label>
+      <Form.Control type="text" placeholder="User Name" id="username" />
+      </Form.Group>
+      <Form.Group controlId="formBasicPassword">
+      <Form.Label>Password</Form.Label>
+      <Form.Control type="password" placeholder="Password" id="password" />
+      </Form.Group>
+  
+        <Button variant="dark" onClick={performLogin}>Login</Button>
+      </Form>
     </div>
   );
 }
-function LoggedIn() {
+function LoggedIn(props) {
   const [dataFromServer, setDataFromServer] = useState("Loading...");
 
   useEffect(() => {
@@ -37,10 +50,7 @@ function LoggedIn() {
   }, []);
 
   return (
-    <div>
-      <h2>Data Received from server</h2>
-      <h3>{dataFromServer}</h3>
-    </div>
+    <></>
   );
 }
 
@@ -50,6 +60,7 @@ function LoginComplete(props) {
   const logout = () => {
     facade.logout();
     props.setLoggedIn(false);
+    <Home/>
   };
   const login = (user, pass) => {
     facade.login(user, pass).then((res) => props.setLoggedIn(true));
@@ -61,8 +72,8 @@ function LoginComplete(props) {
         <LogIn login={login} />
       ) : (
         <div>
-          <LoggedIn />
-          <button onClick={logout}>Logout</button>
+          <LoggedIn loggedIn = {props.loggedIn}/>
+          <Button href="/"variant="dark" onClick={logout}>Logout {facade.getUserName()}</Button>
         </div>
       )}
     </div>

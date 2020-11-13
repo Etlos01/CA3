@@ -17,7 +17,7 @@ const NavBarIO = () => {
   return (
     <>
       <Router>
-        <Header loggedIn={loggedIn} />
+        <Header setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
         <div>
           <Content setLoggedIn={setLoggedIn} loggedIn={loggedIn} />
         </div>
@@ -55,8 +55,10 @@ const Header = (props) => {
               <ValidateRoleSite loggedIn={props.loggedIn} />
             </Nav>          
             <Nav>
-              <DropdownButton menuAlign={{ lg: 'right' }} title={<IsLoggedIn loggedIn={props.loggedIn}/>}>
+              <DropdownButton variant="dark" menuAlign={{ lg: 'right' }} title={<IsLoggedIn loggedIn={props.loggedIn}/>}>
+              <ButtonGroup>
               <Login setLoggedIn={props.setLoggedIn} loggedIn={props.loggedIn}/>
+              </ButtonGroup>
               </DropdownButton>
             </Nav>
           </Navbar.Collapse>
@@ -76,7 +78,7 @@ const Content = (props) => {
       <Route path="/AdminSite" component={AdminSite} />
       <Route path="/UserSite" component={UserSite} />
       <Route path="/Login">
-        <Login setLoggedIn={props.setLoggedIn} loggedIn={props.loggedIn} />
+      <Login setLoggedIn={props.setLoggedIn} loggedIn={props.loggedIn} />
       </Route>
       <Route path="*" component={NoMatch} />
     </Switch>

@@ -6,7 +6,7 @@ const AdminNavigator = () => {
   return (
     <NavItem href="/AdminSite">
       <Nav.Link as={Link} to="/AdminSite">
-        Admin
+        Admin Site
       </Nav.Link>
     </NavItem>
   );
