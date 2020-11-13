@@ -1,4 +1,4 @@
-Her er min løsning på CA3. 
+Her er min løsning på CA3.
 
 * OPLYSNINGER TIL BRUG AF FRONT-END *
 
@@ -10,7 +10,7 @@ Disse kan benyttes til at afprøve sidens funktionalitet.
 
 *** LINK TIL FRONT-END ***
 
-*** AndreasCA3.surge.sh ***
+*** www.AndreasCA3.surge.sh ***
 
 ***                     ***
 
